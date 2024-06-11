@@ -1,10 +1,16 @@
-import { cart, removeFromCart, updateCartQuantity, updateQuantity, updateDelevryOption } from "../../data/cart.js";
-import { products, getProduct } from "../../data/products.js";
-import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
-import { deliveryOptions, getDelivaryOption } from "../../data/deliveryOptions.js";
-import { paymentSummary } from "./paymentSummary.js";
+// import {
+//   cart,
+//   removeFromCart,
+//   updateCartQuantity,
+//   updateQuantity,
+//   updateDelevryOption,
+// } from "../../data/cart.js";
+// import { products, getProduct } from "../../data/products.js";
+// import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
+// import { deliveryOptions, getDelivaryOption } from "../../data/deliveryOptions.js";
+// import { paymentSummary } from "./paymentSummary.js";
 
-export function displayCart() {
+function displayCart() {
   updateCartQuantity(".js-total-quantity");
   let cartItemHtml = "";
 
@@ -26,14 +32,22 @@ export function displayCart() {
                   <div class="product-name">${matchingItem.name}</div>
                   <div class="product-price">$${(matchingItem.priceCents / 100).toFixed(2)}</div>
                   <div class="product-quantity">
-                    <span> Quantity: <span class="quantity-label js-quantity-label-${matchingItem.id}">${cartItem.quantity}</span> </span>
-                    <span class="update-quantity-link link-primary js-update-link" data-product-id=${matchingItem.id}> Update </span>
-                    <input class="quantity-input js-quantity-input-${matchingItem.id} d-none" type="number" min="1" 
+                    <span> Quantity: <span class="quantity-label js-quantity-label-${
+                      matchingItem.id
+                    }">${cartItem.quantity}</span> </span>
+                    <span class="update-quantity-link link-primary js-update-link" data-product-id=${
+                      matchingItem.id
+                    }> Update </span>
+                    <input class="quantity-input js-quantity-input-${
+                      matchingItem.id
+                    } d-none" type="number" min="1" 
                     value="${cartItem.quantity}">
                     <span class="save-quantity-link link-primary js-save-quantity-link d-none"
                     data-product-id=${matchingItem.id}>Save</span>
                     
-                    <span class="delete-quantity-link link-primary js-delete-link" data-product-id=${matchingItem.id}> Delete </span>
+                    <span class="delete-quantity-link link-primary js-delete-link" data-product-id=${
+                      matchingItem.id
+                    }> Delete </span>
                   </div>
                 </div>
 
@@ -95,7 +109,8 @@ export function displayCart() {
       const deliveryDate = today.add(deliveryOption.delevryDays, "days");
       const dateString = deliveryDate.format("dddd, MMMM D");
 
-      const priceString = deliveryOption.priceCents === 0 ? "FREE" : `$${deliveryOption.priceCents / 100} -`;
+      const priceString =
+        deliveryOption.priceCents === 0 ? "FREE" : `$${deliveryOption.priceCents / 100} -`;
 
       const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
 
@@ -103,7 +118,9 @@ export function displayCart() {
               data-product-id="${matchingItem.id}"
               data-delivery-option-id="${deliveryOption.id}">
               <input type="radio"
-              ${isChecked ? "checked" : ""} class="delivery-option-input" name="delivery-option-${matchingItem.id}" />
+              ${isChecked ? "checked" : ""} class="delivery-option-input" name="delivery-option-${
+        matchingItem.id
+      }" />
               <div>
                 <div class="delivery-option-date">${dateString}</div>
                 <div class="delivery-option-price">${priceString} Shipping</div>

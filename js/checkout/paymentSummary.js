@@ -1,8 +1,8 @@
-import { cart, updateCartQuantity } from "../../data/cart.js";
-import { products, getProduct } from "../../data/products.js";
-import { deliveryOptions, getDelivaryOption } from "../../data/deliveryOptions.js";
+// import { cart, updateCartQuantity } from "../../data/cart.js";
+// import { products, getProduct } from "../../data/products.js";
+// import { deliveryOptions, getDelivaryOption } from "../../data/deliveryOptions.js";
 
-export function paymentSummary() {
+function paymentSummary() {
   let totalAmount = 0;
   let totalShipping = 0;
   let totalBeforTax = 0;

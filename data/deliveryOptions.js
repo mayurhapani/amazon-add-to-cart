@@ -1,4 +1,4 @@
-export function getDelivaryOption(deliveryOptionId) {
+function getDelivaryOption(deliveryOptionId) {
   let deliveryOption;
 
   deliveryOptions.forEach((option) => {
@@ -7,7 +7,7 @@ export function getDelivaryOption(deliveryOptionId) {
   return deliveryOption;
 }
 
-export const deliveryOptions = [
+const deliveryOptions = [
   {
     id: "1",
     delevryDays: 7,
